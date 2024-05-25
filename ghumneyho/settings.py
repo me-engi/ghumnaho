@@ -88,6 +88,20 @@ DATABASES = {
     }
 }
 
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For development
+
+# For production, you might use something like this:
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.your-email-provider.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'your-email@example.com'
+# EMAIL_HOST_PASSWORD = 'your-email-password'
+
+DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
