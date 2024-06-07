@@ -11,7 +11,7 @@ def tour_image_upload_path(instance, filename):
     return os.path.join("tour_images", instance.tour.name, filename)
 
 class Itinerary(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    
     tour = models.ForeignKey('Tour', related_name='itinerary', on_delete=models.CASCADE)
     title = models.CharField(max_length=255, default='Place')
     day_number = models.PositiveIntegerField()
@@ -21,7 +21,7 @@ class Itinerary(models.Model):
         return f"Day {self.day_number}: {self.description}"
 
 class Image(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    
     tour = models.ForeignKey('Tour', related_name='tour_images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to=tour_image_upload_path)
 
@@ -29,7 +29,7 @@ class Image(models.Model):
         return f"Image for {self.tour.name}"
 
 class TourAvailability(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    
     tour = models.ForeignKey('Tour', related_name='availabilities', on_delete=models.CASCADE)
     unavailable_date = models.DateField()
 
@@ -37,7 +37,7 @@ class TourAvailability(models.Model):
         return f"{self.tour.name} - {self.unavailable_date}"
 
 class Coupon(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    
     tour = models.ForeignKey('Tour', related_name='coupons', on_delete=models.CASCADE)
     code = models.CharField(max_length=50, unique=True)
     max_uses = models.PositiveIntegerField()
@@ -48,7 +48,7 @@ class Coupon(models.Model):
         return f"{self.code} - {self.tour.name}"
 
 class Tour(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    
     name = models.CharField(max_length=255)
     country = models.CharField(max_length=255, default='India')
     description = models.TextField()

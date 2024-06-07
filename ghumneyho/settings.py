@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^llf+($24ck_=#2!90mx%t!!uegvvs!6^tv6(o&70zi=xvf!1%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'booking',
+    'rest_framework',
     'tour',
     'users',
 ]
@@ -114,6 +115,9 @@ DATABASES = {
         'PASSWORD': '*Nepal8910#',
         'HOST': 'localhost',   # Or the IP address where your MySQL server is hosted
         'PORT': '3306',        # Default MySQL port
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     }
 }
 
